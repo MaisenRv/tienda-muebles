@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  middleware:
+    container_name: middle
+    build:
+      context: ./middleware
+    ports:
+      - "8000:8000"
+    

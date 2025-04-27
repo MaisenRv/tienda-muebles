@@ -1,0 +1,2 @@
+class MiddlewareController:
+    pass

@@ -1,0 +1,2 @@
+class ContabilidadController:
+    pass

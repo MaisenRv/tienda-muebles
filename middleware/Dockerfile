@@ -8,4 +8,4 @@ RUN apk add python3
 RUN apk add py3-flask
 EXPOSE 8000
 
-CMD ["python", "app.py"] 
+CMD ["python", "/app/app.py"] 
