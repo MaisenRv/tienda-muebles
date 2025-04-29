@@ -57,15 +57,25 @@ class MiddlewareController:
                 for p in res["productos"]:
                     if producto["id"] == p["id"]:
                         p["nombre"] = producto["nombre"]
-                        p["precio"] = producto["precio_unitario"]
+                        p["precio_unitario"] = producto["precio_unitario"]
             
             # registra la venta en el componente de compras-ventas
-            registrar_venta = requests.post(URLS['compra-venta']['registarVenta'], json=res)
-            if registrar_venta.status_code == 400:
-                return registrar_venta.json(), registrar_venta.status_code
+            # registrar_venta = requests.post(URLS['compra-venta']['registarVenta'], json=res)
+            # if registrar_venta.status_code == 400:
+            #     return registrar_venta.json(), registrar_venta.status_code
             
             # Genera la factura en el componente de contabilidad
+            # del res["tipo"]
+            # del res["peticion"]
             # generar_factura = requests.post(URLS['contabilidad']['generarFactura'], json=res)
+            
+            # Actualiza el inventario
+            # actualizar_inventario = requests.post(URLS['inventario']['actualizarInventario'], json={"productos":res["productos"], "tipo": "venta"})
+
+            #Ordena el transporte
+            # ordenar_transporte = requests.post(URLS['transportador']['ordenarTransporte'], json=res)
+            
+            
 
         return tienda_resquest.json(), tienda_resquest.status_code
         

@@ -63,7 +63,7 @@ def generar_factura():
                     type: integer
                   cantidad:
                     type: integer
-                  precio:
+                  precio_unitario:
                     type: number
                   nombre:
                     type: string

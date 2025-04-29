@@ -7,7 +7,13 @@ app = Flask(__name__)
 
 midd_cotroller = MiddlewareController()
 
-app.add_url_rule('/clientes',view_func=midd_cotroller.clientes, methods=['POST'])
+@app.route('/clientes', methods=['POST'])
+def clientes():
+    """
+    Maneja las peticiones relacionadas con los clientes.
+    """
+    return midd_cotroller.clientes()
+
 
 if __name__ == '__main__':
     app.run(debug=True,host= socket.gethostbyname(socket.gethostname()),port=8000) 

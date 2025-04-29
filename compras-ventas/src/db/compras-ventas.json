@@ -1,27 +1,4 @@
 {
     "compras": [],
-    "ventas": [
-        {
-            "cliente": {
-                "nombre": "jose"
-            },
-            "condicion_venta": null,
-            "emisor": {
-                "direccion": "Calle Falsa 123",
-                "identificacion": "123456789",
-                "nombre": "Tienda de muebles",
-                "telefono": "123456789"
-            },
-            "forma_pago": "contado",
-            "productos": [
-                {
-                    "cantidad": 1,
-                    "id": 1,
-                    "nombre": "mueble1",
-                    "precio": 100
-                }
-            ],
-            "tipo": "compra"
-        }
-    ]
+    "ventas": []
 }

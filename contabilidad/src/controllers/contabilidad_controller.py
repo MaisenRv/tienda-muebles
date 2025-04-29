@@ -49,7 +49,7 @@ class ContabilidadController:
         return { "subtotal":subtotal , "iva": iva, "total": total }
         
     def __generate_invoice_number(self):
-        consecutive_number = self.__contabilidad_dao.get_last_number() # Placeholder for the last invoice number
+        consecutive_number = self.__contabilidad_dao.get_last_number() 
         consecutive_number = int(consecutive_number[1:]) + 1
         return f'F{consecutive_number:05}'
 

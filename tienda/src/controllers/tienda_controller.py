@@ -23,14 +23,15 @@ class TiendaController:
                 return jsonify({"error":"Falta el campo 'productos' en la solicitud"}), 200
             if data['productos'] == []:
                 return jsonify({"error":"El campo 'productos' esta vacio"}), 200
+            if 'condicion_venta' not in data:
+                return jsonify({"error":"Falta el campo 'condicion_venta' en la solicitud"}), 200
+            if 'forma_pago' not in data:
+                return jsonify({"error":"Falta el campo 'forma_pago' en la solicitud"}), 200
             
             return jsonify({
                 "tipo":"compra", 
-                "cliente": data['cliente'],
                 "emisor":self.__informacion, 
-                "productos": data['productos'],
-                "condicion_venta": data['condicion_venta'] if 'condicion_venta' in data else None,
-                "forma_pago": data['forma_pago'] if 'forma_pago' in data else 'contado'
+                **data
             }), 200
         
         else:

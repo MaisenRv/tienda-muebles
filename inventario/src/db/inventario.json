@@ -1,15 +1,65 @@
 {
     "inventario": [],
-    "productos":[
-        {"id": 1, "nombre": "mueble1", "precio_unitario": 100, "cantidad": 10},
-        {"id": 2, "nombre": "mueble2", "precio_unitario": 200, "cantidad": 5},
-        {"id": 3, "nombre": "mueble3", "precio_unitario": 300, "cantidad": 2},
-        {"id": 4, "nombre": "mueble4", "precio_unitario": 400, "cantidad": 1},
-        {"id": 5, "nombre": "mueble5", "precio_unitario": 500, "cantidad": 0},
-        {"id": 6, "nombre": "mueble6", "precio_unitario": 600, "cantidad": 20},
-        {"id": 7, "nombre": "mueble7", "precio_unitario": 700, "cantidad": 32},
-        {"id": 8, "nombre": "mueble8", "precio_unitario": 800, "cantidad": 4},
-        {"id": 9, "nombre": "mueble9", "precio_unitario": 900, "cantidad": 12},
-        {"id": 10, "nombre": "mueble10", "precio_unitario": 1000, "cantidad": 7}
+    "productos": [
+        {
+            "id": 1,
+            "nombre": "mueble1",
+            "precio_unitario": 100,
+            "cantidad": 6
+        },
+        {
+            "id": 2,
+            "nombre": "mueble2",
+            "precio_unitario": 200,
+            "cantidad": 5
+        },
+        {
+            "id": 3,
+            "nombre": "mueble3",
+            "precio_unitario": 300,
+            "cantidad": 2
+        },
+        {
+            "id": 4,
+            "nombre": "mueble4",
+            "precio_unitario": 400,
+            "cantidad": 1
+        },
+        {
+            "id": 5,
+            "nombre": "mueble5",
+            "precio_unitario": 500,
+            "cantidad": 0
+        },
+        {
+            "id": 6,
+            "nombre": "mueble6",
+            "precio_unitario": 600,
+            "cantidad": 20
+        },
+        {
+            "id": 7,
+            "nombre": "mueble7",
+            "precio_unitario": 700,
+            "cantidad": 32
+        },
+        {
+            "id": 8,
+            "nombre": "mueble8",
+            "precio_unitario": 800,
+            "cantidad": 4
+        },
+        {
+            "id": 9,
+            "nombre": "mueble9",
+            "precio_unitario": 900,
+            "cantidad": 12
+        },
+        {
+            "id": 10,
+            "nombre": "mueble10",
+            "precio_unitario": 1000,
+            "cantidad": 7
+        }
     ]
 }

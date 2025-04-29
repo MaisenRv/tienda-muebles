@@ -1,2 +1,3 @@
 class TransportadorController:
-    pass
+    def ordenar_transporte(self):
+        pass

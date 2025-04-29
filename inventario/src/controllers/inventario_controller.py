@@ -22,4 +22,15 @@ class InventarioController:
         return jsonify({"productos_validos": productos_validos}), 200
     
     def actualizar_inventario(self):
-        pass
+        data = request.get_json()
+        self.__inventario_dao.update_products(data["productos"])
+        for producto in data["productos"]:
+            self.__inventario_dao.add(
+                {
+                    "operacion":data["tipo"],
+                    "id":producto["id"], 
+                    "cantidad": producto["cantidad"]
+                },
+                "inventario"
+            )
+        return jsonify({"mensaje": "Inventario actualizado correctamente","data":data}), 200
