@@ -1,9 +1,118 @@
 version: "3.8"
+
+networks:
+  tienda_muebles:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+
 services:
+  base_image:
+    container_name: base_image_builder
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+    image: tienda_base
+    networks:
+      - tienda_muebles
+
   middleware:
     container_name: middle
-    build:
-      context: ./middleware
+    image: tienda_base
+    volumes:
+      - ./middleware:/app
     ports:
       - "8000:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.2
+    depends_on:
+      - tienda
+      - inventario
+      - transportador
+      - contabilidad
+      - compras_ventas
+      - atencion_proveedor
+    environment:
+      - FLASK_ENV=development
+  
+  tienda:
+    container_name: tienda
+    image: tienda_base
+    volumes:
+      - ./tienda:/app
+    ports:
+      - "8001:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.3
+    environment:
+      - FLASK_ENV=development
+  
+  inventario:
+    container_name: inventario
+    image: tienda_base
+    volumes:
+      - ./inventario:/app
+    ports:
+      - "8002:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.4
+    environment:
+      - FLASK_ENV=development
+  
+  transportador:
+    container_name: transportador
+    image: tienda_base
+    volumes:
+      - ./transportador:/app
+    ports:
+      - "8003:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.5
+    environment:
+      - FLASK_ENV=development
+  
+  contabilidad:
+    container_name: contabilidad
+    image: tienda_base
+    volumes:
+      - ./contabilidad:/app
+    ports:
+      - "8004:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.6
+    environment:
+      - FLASK_ENV=development
+  
+  compras_ventas:
+    container_name: compras_ventas
+    image: tienda_base
+    volumes:
+      - ./compras-ventas:/app
+    ports:
+      - "8005:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.7
+    environment:
+      - FLASK_ENV=development
+
+  atencion_proveedor:
+    container_name: atencion_proveedor
+    image: tienda_base
+    volumes:
+      - ./atencion-proveedor:/app
+    ports:
+      - "8006:8000"
+    networks:
+      tienda_muebles:
+        ipv4_address: 172.20.0.8
+    environment:
+      - FLASK_ENV=development
     

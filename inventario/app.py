@@ -7,7 +7,9 @@ app = Flask(__name__)
 
 inventario_controller = InventarioController()
 
-# Define routes here using inventario_controller
+app.add_url_rule('/inventario/actualizarInventario', view_func=inventario_controller.actualizar_inventario, methods=['POST'])
+app.add_url_rule('/inventario/cargarProductos', view_func=inventario_controller.cargar_productos, methods=['GET'])
+app.add_url_rule('/inventario/validarProductos', view_func=inventario_controller.validar_productos, methods=['POST'])
 
 if __name__ == '__main__':
-    app.run(host=socket.gethostbyname(socket.gethostname()), port=8000)
+    app.run(debug=True,host=socket.gethostbyname(socket.gethostname()), port=8000)

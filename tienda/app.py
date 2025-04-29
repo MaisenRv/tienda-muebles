@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 tienda_controller = TiendaController()
 
-# Define routes here using tienda_controller
+app.add_url_rule('/tienda/atenderCliente', view_func=tienda_controller.atender_cliente, methods=['POST'])
 
 if __name__ == '__main__':
-    app.run(host=socket.gethostbyname(socket.gethostname()), port=8000)
+    app.run(debug=True,host=socket.gethostbyname(socket.gethostname()), port=8000)

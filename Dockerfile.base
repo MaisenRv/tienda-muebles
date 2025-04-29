@@ -1,0 +1,15 @@
+FROM alpine:latest
+WORKDIR /app
+
+RUN apk update
+RUN apk upgrade
+RUN apk add python3
+RUN apk add py3-flask
+RUN apk add py3-requests
+RUN apk add --no-cache py3-pip
+RUN pip install --break-system-packages flasgger
+
+
+EXPOSE 8000
+
+CMD ["python", "/app/app.py"]

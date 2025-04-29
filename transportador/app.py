@@ -10,4 +10,4 @@ transportador_controller = TransportadorController()
 # Define routes here using transportador_controller
 
 if __name__ == '__main__':
-    app.run(host=socket.gethostbyname(socket.gethostname()), port=8000)
+    app.run(debug=True,host=socket.gethostbyname(socket.gethostname()), port=8000)

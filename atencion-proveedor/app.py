@@ -9,4 +9,4 @@ atencion_proveedor_controller = AtencionProveedorController()
 # Define routes here using atencion_proveedor_controller
 
 if __name__ == '__main__':
-    app.run(host=socket.gethostbyname(socket.gethostname()), port=8000)
+    app.run(debug=True,host=socket.gethostbyname(socket.gethostname()), port=8000)
