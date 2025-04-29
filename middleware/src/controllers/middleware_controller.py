@@ -73,7 +73,8 @@ class MiddlewareController:
             # actualizar_inventario = requests.post(URLS['inventario']['actualizarInventario'], json={"productos":res["productos"], "tipo": "venta"})
 
             #Ordena el transporte
-            # ordenar_transporte = requests.post(URLS['transportador']['ordenarTransporte'], json=res)
+            ordenar_transporte = requests.post(URLS['transportador']['ordenarTransporte'], json={"cliente":res["cliente"], "productos": res["productos"], "emisor": res["emisor"]})
+            return ordenar_transporte.json(), ordenar_transporte.status_code
             
             
 

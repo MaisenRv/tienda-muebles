@@ -4,7 +4,7 @@ URLS ={
         'recibirFactura': 'http://172.20.0.6:8000/contabilidad/recibirFactura'
     },
     'transportador':{
-        'ordenarTransporte': '/transportador/ordenarTransporte',
+        'ordenarTransporte': 'http://172.20.0.5:8000/transportador/ordenarTransporte',
     },
     'tienda':{
         'atenderCliente': 'http://172.20.0.3:8000/tienda/atenderCliente',
