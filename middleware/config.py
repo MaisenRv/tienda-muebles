@@ -19,6 +19,6 @@ URLS ={
         'registarVenta': 'http://172.20.0.7:8000/compras-ventas/registrarVenta',
     },
     'atencion-proveedor':{
-        'atenderProveedor': '/atencion-proveedor/atenderProveedor',
+        'atenderProveedor': 'http://172.20.0.8:8000/atencion-proveedor/atenderProveedor',
     }
 }
