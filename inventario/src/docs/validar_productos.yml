@@ -1,0 +1,44 @@
+Valida la existencia y cantidad de productos en el inventario.
+---
+description: Valida la existencia y cantidad de productos en el inventario.
+tags:
+  - Inventario
+parameters:
+  - name: productos
+    in: body
+    required: true
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          cantidad:
+            type: integer
+responses:
+  200:
+    description: Productos validados correctamente.
+    schema:
+      type: object
+      properties:
+        productos_validos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              nombre:
+                type: string
+              precio_unitario:
+                type: number
+              cantidad:
+                type: integer
+  400:
+    description: Error en la validación de productos.
+    schema:
+      type: object
+      properties:
+        error:
+          type: string

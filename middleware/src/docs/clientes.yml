@@ -1,0 +1,202 @@
+Maneja las peticiones relacionadas con los clientes.
+---
+tags:
+  - name: Clientes
+parameters:
+  - name: peticion
+    in: body
+    required: true
+    description: Peticion puede ser "mirar_productos" o "comprar".
+    type: object
+    properties:
+      peticion:
+        type: string
+        example: "comprar"
+  - name: condicion_venta
+    in: body
+    required: false
+    description: Condicion de venta puede ser "Contado" o "Credito".
+    type: object
+    properties:
+      condicion_venta:
+        type: string
+        example: "Contado"
+  - name: forma_pago
+    in: body
+    required: false
+    description: Forma de pago puede ser "Efectivo", "Tarjeta de credito", "Tarjeta de debito" o "Transferencia".
+    type: object
+    properties:
+      forma_pago:
+        type: string
+        example: "Efectivo"
+  - name: cliente
+    in: body
+    required: false
+    description: Datos del cliente.
+    type: object
+    properties:
+      cliente:
+        type: object
+        properties:
+          nombre:
+            type: string
+            example: "Juan Perez"
+          direccion:
+            type: string
+            example: "Calle 123"
+          identificacion:
+            type: string
+            example: "123456789"
+  - name: productos
+    in: body
+    required: false
+    description: Productos a comprar.
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        cantidad:
+          type: number
+          example: 2
+
+  - name: payload
+    in: body
+    required: true
+    description: Peticion del cliente.
+    schema:
+      type: object
+      properties:
+        peticion:
+          type: string
+          example: "compra"
+        condicion_venta:
+          type: string
+          example: "Contado"
+        forma_pago:
+          type: string
+          example: "Efectivo"
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+              example: "Juan Perez"
+            direccion:
+              type: string
+              example: "Calle 123"
+            identificacion:
+              type: string
+              example: "123456789"
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              cantidad:
+                type: number
+responses:
+  200:
+    description: Respuesta exitosa
+    schema:
+      type: object
+      properties:
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+              example: "Juan Perez"
+            direccion:
+              type: string
+              example: "Calle 123"
+            identificacion:
+              type: string
+              example: "123456789"
+        emisor:
+          type: object
+          properties:
+            nombre:
+              type: string
+              example: "Tienda 1"
+            direccion:
+              type: string
+              example: "Calle 456"
+            identificacion:
+              type: string
+              example: "987654321"
+            telefono:
+              type: string
+              example: "123456789"
+        factura:
+          type: object
+          properties:
+            cliente:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "Juan Perez"
+                direccion:
+                  type: string
+                  example: "Calle 123"
+                identificacion:
+                  type: string
+                  example: "123456789"
+            emisor:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "Tienda 1"
+                direccion:
+                  type: string
+                  example: "Calle 456"
+                identificacion:
+                  type: string
+                  example: "987654321"
+                telefono:
+                  type: string
+                  example: "123456789"
+            condicion_venta:
+              type: string
+              example: "Contado"
+            forma_pago:
+              type: string
+              example: "Efectivo"
+            factura_numero:
+              type: string
+              example: "f00001"
+            fecha_emision:
+              type: string
+              example: "2023-10-01"
+            productos:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nombre:
+                    type: string
+                  precio_unitario:
+                    type: number
+                  cantidad:
+                    type: number
+            subtotal:
+              type: number
+            iva:
+              type: number
+            total:
+              type: number
+        mensaje_inventario:
+            type: string
+        mesaje_ventas_compras:
+            type: string
+        mesaje_transporte:
+            type: string  

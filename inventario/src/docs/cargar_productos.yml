@@ -1,0 +1,20 @@
+Carga los productos disponibles en el inventario.
+---
+description: Lista los productos del inventario.
+tags:
+  - Inventario
+responses:
+  200:
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          nombre:
+            type: string
+          precio_unitario:
+            type: number
+          cantidad_disponible:
+            type: integer

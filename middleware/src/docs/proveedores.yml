@@ -1,0 +1,188 @@
+Maneja las peticiones relacionadas con los proveedores.
+---
+tags:
+  - name: Proveedores
+parameters:
+  - name: peticion
+    in: body
+    required: true
+    description: Peticion puede ser "cargar_requerimientos_productos" o "venta".
+    type: object
+    properties:
+      peticion:
+        type: string
+        example: "venta"
+  - name : factura
+    in: body
+    required: false
+    description: Factura que generar el proveedor.
+    type: object
+    properties:
+      factura:
+        type: object
+        properties:
+          cliente:
+            type: object
+            properties:
+              nombre:
+                type: string
+                example: "Juan Perez"
+              direccion:
+                type: string
+                example: "Calle 123"
+              identificacion:
+                type: string
+                example: "123456789"
+          emisor:
+            type: object
+            properties:
+              nombre:
+                type: string
+                example: "Tienda Muebles"
+              direccion:
+                type: string
+                example: "Calle 456"
+              identificacion:
+                type: string
+                example: "987654321"
+          condicion_venta:
+            type: string
+            example: "Contado"
+          forma_pago:
+            type: string
+            example: "Efectivo"
+          productos:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                cantidad:
+                  type: integer
+                  example: 2
+                nombre:
+                  type: string
+                  example: "mueble1"
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        peticion:
+          type: string
+          example: "venta"
+        factura:
+          type: object
+          properties:
+            cliente:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "Juan Perez"
+                direccion:
+                  type: string
+                  example: "Calle 123"
+                identificacion:
+                  type: string
+                  example: "123456789"
+            emisor:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "Tienda Muebles"
+                direccion:
+                  type: string
+                  example: "Calle 456"
+                identificacion:
+                  type: string
+                  example: "987654321"
+            condicion_venta:
+              type: string
+              example: "Contado"
+            forma_pago:
+              type: string
+              example: "Efectivo"
+            productos:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  cantidad:
+                    type: integer
+                    example: 2
+                  nombre:
+                    type: string
+                    example: "mueble1"
+responses:
+  200:
+    description: Respuesta exitosa
+    schema:
+      type: object
+      properties:
+        mensaje_compra_venta:
+          type: string
+        mensaje_contabilidad:
+          type: string
+        mensaje_inventario:
+          type: string
+        peticion:
+          type: string
+          example: "venta"
+        factura:
+          type: object
+          properties:
+            cliente:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "Juan Perez"
+                direccion:
+                  type: string
+                  example: "Calle 123"
+                identificacion:
+                  type: string
+                  example: "123456789"
+            emisor:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "Tienda Muebles"
+                direccion:
+                  type: string
+                  example: "Calle 456"
+                identificacion:
+                  type: string
+                  example: "987654321"
+            condicion_venta:
+              type: string
+              example: "Contado"
+            forma_pago:
+              type: string
+              example: "Efectivo"
+            productos:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  cantidad:
+                    type: integer
+                    example: 2
+                  nombre:
+                    type: string
+                    example: "mueble1"
+      
+
+

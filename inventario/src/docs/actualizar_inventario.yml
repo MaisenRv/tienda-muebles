@@ -1,13 +1,45 @@
 Actualiza el inventario de productos.
 ---
+description: Actualiza el inventario de productos en el sistema.
 tags:
   - Inventario
 parameters:
+  - name: tipo
+    in: body
+    required: true
+    description: Tipo de actualización del inventario ("venta" o "compra").
+    type: object
+    properties:
+      tipo:
+        type: string
+        description: Tipo de actualización del inventario
+        enum:
+          - venta
+          - compra
   - name: productos
     in: body
     required: true
     description: Lista de productos a actualizar en el inventario.
-
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID del producto
+        cantidad:
+          type: integer
+          description: Cantidad del producto a actualizar
+        nombre:
+          type: string
+          description: Nombre del producto
+        precio_unitario:
+          type: number
+          description: Precio unitario del producto
+  - name: payload
+    in: body
+    required: true
+    description: Lista de productos a actualizar en el inventario.
     schema:
       type: obect
       properties:
