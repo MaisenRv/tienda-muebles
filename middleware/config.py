@@ -12,6 +12,7 @@ URLS ={
     'inventario':{
         'cargarProductos': 'http://172.20.0.4:8000/inventario/cargarProductos',
         'validarProductos': 'http://172.20.0.4:8000/inventario/validarProductos',
+        'cargarRequerimientosProductos': 'http://172.20.0.4:8000/inventario/cargarRequerimientosProductos',
         'actualizarInventario': 'http://172.20.0.4:8000/inventario/actualizarInventario'
     },
     'compra-venta':{

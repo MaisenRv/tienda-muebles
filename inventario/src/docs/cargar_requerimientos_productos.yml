@@ -1,0 +1,19 @@
+Carga los requerimientos de productos.
+---
+description: Carga los los productos que tienen menos de 10 unidades en inventario.
+tags:
+  - Inventario
+responses:
+  200:
+    description: Lista de requerimientos de productos.
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          nombre:
+            type: string
+          cantidad_requerida:
+            type: integer

@@ -55,6 +55,25 @@ class MiddlewareController:
     def proveedores(self):
         data = request.get_json()
         atencion_proveedor_resquest = requests.post(URLS['atencion-proveedor']['atenderProveedor'], json=data)
+
+        if 'tipo' in atencion_proveedor_resquest.json() and atencion_proveedor_resquest.json()["tipo"] == "requerimientos":
+            productos = requests.get(URLS['inventario']['cargarRequerimientosProductos'])
+            return jsonify(productos.json()),200
+        
+        if 'tipo' in atencion_proveedor_resquest.json() and atencion_proveedor_resquest.json()["tipo"] == "venta":
+            registrar_compra = requests.post(URLS['compra-venta']['registarCompra'], json=atencion_proveedor_resquest.json())
+            if registrar_compra.status_code == 400:
+                return registrar_compra.json(), registrar_compra.status_code
+            
+            recibir_factura = requests.post(URLS['contabilidad']['recibirFactura'], json=atencion_proveedor_resquest.json()["factura"])
+            if recibir_factura.status_code == 400:
+                return recibir_factura.json(), recibir_factura.status_code
+            actualizar_inventario = requests.post(URLS['inventario']['actualizarInventario'], json={"productos":atencion_proveedor_resquest.json()["factura"]["productos"], "tipo": "compra"})
+            data["mensaje_compra_venta"] = registrar_compra.json()["mensaje"]
+            data["mensaje_contabilidad"] = recibir_factura.json()["mensaje"]
+            data["mensaje_inventario"] = actualizar_inventario.json()["mensaje"]
+            return data, 200
+            
         return atencion_proveedor_resquest.json(), atencion_proveedor_resquest.status_code
 
         

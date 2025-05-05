@@ -1,0 +1,132 @@
+Atiende un ploveedor
+---
+tags:
+  - Proveedor
+parameters:
+  - name: peticion
+    in: body
+    required: true
+    description: Acción que quiere realizar el proveedor ("cargar_requerimientos_productos","venta")
+    schema:
+      type: object
+      properties:
+        peticion:
+          type: string
+          description: Acción que quiere realizar el proveedor
+          enum:
+            - cargar_requerimientos_productos
+            - venta
+  - name: factura
+    in: body
+    required: false
+    description: Datos de la factura del proveedor, esta solo es necesaria si la acción es "venta"
+    schema:
+      type: object
+      properties:
+        factura:
+          type: object
+          properties:
+            cliente:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: Nombre del cliente
+                direccion:
+                  type: string
+                  description: Dirección del cliente
+                indentificacion:
+                  type: string
+                  description: Identificación del cliente
+            emisor:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: Nombre del emisor
+                direccion:
+                  type: string
+                  description: Dirección del emisor
+                identificacion:
+                  type: string
+                  description: Identificación del emisor
+            condicion_venta:
+              type: string
+              description: Condición de venta
+              example: "Contado"
+            forma_pago:
+              type: string
+              description: Forma de pago
+              example: "Efectivo"
+            productos:
+              type: array
+              items:
+                type: object
+                properties:
+                  nombre:
+                    type: string
+                    description: Nombre del producto
+                  cantidad:
+                    type: integer
+                    description: Cantidad del producto
+                  id:
+                    type: string
+                    description: ID del producto
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        peticion:
+          type: string
+          description: Acción que quiere realizar el proveedor
+          enum:
+            - venta
+            - cargar_requerimientos_productos
+        factura:
+          type: object
+          properties:
+            cliente:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: Nombre del cliente
+                direccion:
+                  type: string
+                  description: Dirección del cliente
+                indentificacion:
+                  type: string
+                  description: Identificación del cliente
+            emisor:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: Nombre del emisor
+                direccion:
+                  type: string
+                  description: Dirección del emisor
+                identificacion:
+                  type: string
+                  description: Identificación del emisor
+            condicion_venta:
+              type: string
+              description: Condición de venta
+              example: "Contado"
+            forma_pago:
+              type: string
+              description: Forma de pago
+              example: "Efectivo"
+            productos:
+              type: array
+              items:
+                type: object
+                properties:
+                  nombre:
+                    type: string
+                    description: Nombre del producto
+                  cantidad:
+                    type: integer
+                    description: Cantidad del producto

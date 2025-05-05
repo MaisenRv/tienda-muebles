@@ -1,0 +1,117 @@
+Atender a un cliente en la tienda.
+---
+tags:
+  - Tienda
+parameters:
+  - name: peticion
+    in: body
+    required: true
+    description: Acción que quiere realizar el cliente ("comprar", "mirar_productos"), para mirar productos no es necesario enviar el cliente.
+    schema:
+      type: object
+      properties:
+        peticion:
+          type: string
+          description: Acción que quiere realizar el cliente
+          enum:
+            - comprar
+            - mirar_productos
+  - name: condicion_venta
+    in: body
+    required: false
+    description: Condición de venta del cliente ("contado", "credito").
+    schema:
+      type: object
+      properties:
+        condicion_venta:
+          type: string
+          description: Condición de venta del cliente
+          enum:
+            - contado
+            - credito
+  - name: forma_pago
+    in: body
+    required: false
+    description: Forma de pago del cliente ("efectivo", "credito", "cheque", "transferencia bancaria").
+    schema:
+      type: object
+      properties:
+        forma_pago:
+          type: string
+          description: Forma de pago del cliente
+          enum:
+            - efectivo
+            - credito
+            - cheque
+            - transferencia bancaria
+  - name: cliente
+    in: body
+    required: false
+    description: Información del cliente que quiere realizar una compra o mirar productos.
+    schema:
+      type: object
+      properties:
+        nombre:
+          type: string
+          description: Nombre del cliente.
+        direccion:
+          type: string
+          description: Dirección del cliente.
+        identificacion:
+          type: string
+          description: Identificación del cliente.
+  - name: productos
+    in: body
+    required: false
+    description: Productos que quiere comprar el cliente, solo es necesario si la acción es "comprar" y solo se necesita el id y la cantidad.
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: ID del producto.
+          cantidad:
+            type: integer
+            description: Cantidad del producto.
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - peticion
+      properties:
+        peticion:
+          type: string
+          description: Acción que quiere realizar el cliente
+          enum:
+            - comprar
+            - mirar_productos
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        condicion_venta:
+          type: string
+          enum: ["contado", "credito"]
+        forma_pago:
+          type: string
+          enum: ["efectivo", "credito", "cheque", "transferencia bancaria"]
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID del producto
+              cantidad:
+                type: integer
+                description: Cantidad del producto

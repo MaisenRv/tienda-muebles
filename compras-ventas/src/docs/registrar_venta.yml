@@ -1,0 +1,118 @@
+Registra una venta en el sistema de compras-ventas.
+---
+parameters:
+  - name: cliente
+    in : body
+    description: Datos del cliente
+    required: true
+    schema:
+      type: object
+      properties:
+        nombre:
+          type: string
+        identificacion:
+          type: string
+        direccion:
+          type: string
+  - name: emisor
+    in: body
+    description: Datos del emisor
+    required: true
+    schema:
+      type: object
+      properties:
+        nombre:
+          type: string
+        identificacion:
+          type: string
+        direccion:
+          type: string
+        telefono:
+          type: string
+  - name: condicion_venta
+    in: body
+    description: Condición de venta, puede ser contado o crédito
+    required: true
+    type: object
+    properties:
+      condicion_venta:
+        type: string
+        enum: [contado, credito]
+  - name: forma_pago
+    in: body
+    description: Forma de pago, puede ser contado, crédito o transferencia
+    required: true
+    type: object
+    properties:
+      forma_pago:
+        type: string
+        enum: [contado, credito, transferencia]
+  - name: productos
+    in: body
+    description: Lista de productos a vender
+    required: true
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        cantidad:
+          type: integer
+        nombre:
+          type: string
+        precio:
+          type: number
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        emisor:
+          type: object
+          properties:
+            nombre:
+              type: string
+            identificacion:
+              type: string
+            direccion:
+              type: string
+            telefono:
+              type: string
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+            identificacion:
+              type: string
+            direccion:
+              type: string
+        condicion_venta:
+          type: string
+        forma_pago:
+          type: string
+          enum: [contado, credito, transferencia]
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              cantidad:
+                type: integer
+              nombre:
+                type: string
+              precio:
+                type: number
+responses:
+  200:
+    description: Venta registrada exitosamente.
+    schema:
+      type: object
+      properties:
+        mensaje:
+          type: string
+          example: "Venta registrada correctamente"

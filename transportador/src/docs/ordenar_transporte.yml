@@ -1,0 +1,95 @@
+Genera una orden de transporte para un producto.
+---
+description: Genera una orden de transporte para los productos.
+tags:
+  - Transportador
+parameters:
+  - name: emisor
+    in: body
+    description: Datos del emisor, debe incluir nombre, dirección e identificación.
+    required: true
+    schema:
+      type: object
+      properties:
+        nombre:
+          type: string
+        direccion:
+          type: string
+        identificacion:
+          type: string
+  - name: cliente
+    in: body
+    description: Datos del cliente, debe incluir nombre, dirección e identificación.
+    required: true
+    schema:
+      type: object
+      properties:
+        nombre:
+          type: string
+        direccion:
+          type: string
+        identificacion:
+          type: string
+  - name: productos
+    in: body
+    description: Lista de productos a transportar, cada producto debe incluir id, cantidad, precio unitario y nombre, no puede estar vacío.
+    required: true
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          cantidad:
+            type: integer
+          precio_unitario:
+            type: number
+          nombre:
+            type: string
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        emisor:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              cantidad:
+                type: integer
+              precio_unitario:
+                type: number
+              nombre:
+                type: string
+responses:
+  200:
+    description: Orden de transporte generada exitosamente
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Orden de transporte generada exitosamente"

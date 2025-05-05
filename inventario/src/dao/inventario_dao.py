@@ -10,12 +10,15 @@ class InventarioDAO:
         with open(self.__DB_PATH, 'w') as f:
             json.dump(data, f)
 
-    def update_products(self, data:dict):
+    def update_products(self, data:dict, type:str):
         items = self.get_all()
         for element in data:
             for item in items["productos"]:
                 if item["id"] == element["id"]:
-                    item["cantidad"] -= element["cantidad"]
+                    if type == "venta":
+                        item["cantidad"] -= element["cantidad"]
+                    elif type == "compra":
+                        item["cantidad"] += element["cantidad"]
                     break
         self.save_all(items)
             

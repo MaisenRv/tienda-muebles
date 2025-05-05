@@ -165,8 +165,6 @@ def clientes():
 
 @app.route('/proveedores', methods=['POST'])
 def proveedores():
-    """
-    """
     return midd_cotroller.proveedores()     
            
 if __name__ == '__main__':

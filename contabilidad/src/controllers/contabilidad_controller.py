@@ -26,7 +26,7 @@ class ContabilidadController:
     def recibir_factura(self):
         data = request.get_json()
         self.__contabilidad_dao.add_invoice(data, "Compras")
-        return jsonify({"save":"correct",**data}), 200
+        return jsonify({"mensaje":"Factura guardada",**data}), 200
 
     def __format_invoice(self, data, totales):
         invoice = {

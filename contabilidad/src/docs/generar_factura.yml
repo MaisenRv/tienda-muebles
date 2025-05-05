@@ -1,0 +1,165 @@
+Genera una factura
+---
+description: Genera una factura a partir de los datos proporcionados.
+tags:
+  - Contabilidad
+parameters:
+  - name: cliente
+    type: object
+    description: El cliente debe tener una dirección, identificación y nombre
+    required: true
+    in: body
+    properties:
+      cliente:
+        type: object
+        properties:
+          nombre:
+            type: string
+          direccion:
+            type: string
+          identificacion:
+            type: string
+  - name: emisor
+    type: object
+    description: El emisor debe tener una dirección, identificación y nombre
+    required: true
+    in: body
+    properties:
+      emisor:
+        type: object
+        properties:
+          nombre:
+            type: string
+          direccion:
+            type: string
+          identificacion:
+            type: string
+  - name: condicion_venta
+    type: string
+    description: La condición de venta puede ser "contado" o "crédito"
+    required: true
+    in: body
+    properties:
+      condicion_venta:
+        type: string
+        enum: ["contado", "credito"]
+  - name: forma_pago
+    type: string
+    description: La forma de pago puede ser "efectivo", "crédito", "cheque" o "transferencia bancaria"
+    required: true
+    in: body
+    properties:
+      forma_pago:
+        type: string
+        enum: ["efectivo", "credito", "cheque", "transferencia bancaria"]
+  - name: productos
+    type: array
+    description: Lista de productos con su id, cantidad, precio y nombre, los productos no deben estar vacíos
+    required: true
+    in: body
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        cantidad:
+          type: integer
+        precio_unitario:
+          type: number
+        nombre:
+          type: string
+  - name: payload
+    in: body 
+    required: true
+    description: Factura con todos los datos necesarios, incluyendo el cliente, emisor, condición de venta, forma de pago y productos, todos los campos son obligatorios, los totales se calculan automáticamente y el numero de la factura se genera automáticamente
+    schema:
+      type: object
+      properties:
+        emisor:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        condicion_venta:
+          type: string
+          enum: ["contado", "credito"]
+        forma_pago:
+          type: string
+          enum: ["efectivo", "credito", "cheque", "transferencia bancaria"]
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              cantidad:
+                type: integer
+              precio_unitario:
+                type: number
+              nombre:
+                type: string
+responses:
+  200:
+    description: Factura generada correctamente
+    schema:
+      type: object
+      properties:
+        factura_numero:
+          type: string
+        fecha_emision:
+          type: string
+        emisor:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        cliente:
+          type: object
+          properties:
+            nombre:
+              type: string
+            direccion:
+              type: string
+            identificacion:
+              type: string
+        condicion_venta:
+          type: string
+        forma_pago:
+          type: string
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              cantidad:
+                type: integer
+              precio:
+                type: number
+              nombre:
+                type: string
+        subtotal:
+          type: number
+        iva:
+          type: number
+        total:
+          type: number
