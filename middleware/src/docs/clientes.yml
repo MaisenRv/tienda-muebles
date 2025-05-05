@@ -72,7 +72,7 @@ parameters:
       properties:
         peticion:
           type: string
-          example: "compra"
+          example: "comprar"
         condicion_venta:
           type: string
           example: "Contado"
